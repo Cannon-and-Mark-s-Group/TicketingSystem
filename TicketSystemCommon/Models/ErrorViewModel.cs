@@ -1,4 +1,4 @@
-namespace TicketApp.Models
+namespace TicketSystemCommon.Models
 {
     public class ErrorViewModel
     {

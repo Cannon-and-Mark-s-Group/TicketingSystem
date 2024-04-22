@@ -1,23 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TicketApp.Data;
-using TicketApp.Models;
+using TicketSystemEntities.ApplicationDbContext;
+using TicketSystemEntities.Database;
 
 namespace TicketApp.Controllers
 {
+    //TODO: uncomment this on once we move to new controllers.
+    //[Route("api/v1/[controller]")]
     public class TicketController : Controller
     {
+        #region Fields
+
         private readonly TicketAppContext _context;
 
+        #endregion
+
+        #region Constructor
+
+        //TODO: remove TicketAppContext injection
         public TicketController(TicketAppContext context)
         {
             _context = context;
         }
+
+        #endregion
+
+        #region Old Routes
 
         // GET: Ticket
         public async Task<IActionResult> Index()
@@ -157,5 +165,11 @@ namespace TicketApp.Controllers
         {
           return _context.Ticket.Any(e => e.TicketId == id);
         }
+
+        #endregion
+
+        #region Standard Route Actions
+
+        #endregion
     }
 }
