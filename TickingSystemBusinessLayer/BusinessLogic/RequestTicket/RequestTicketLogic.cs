@@ -8,13 +8,13 @@ namespace TicketSystemBusinessLayer.BusinessLogic.RequestTicket
     {
         #region Fields 
 
-        private readonly TicketAppContext _context;
+        private readonly ITicketAppContext _context;
 
         #endregion
 
         #region Constructor
 
-        public RequestTicketLogic(TicketAppContext context) 
+        public RequestTicketLogic(ITicketAppContext context) 
         {
             _context = context;
         }
@@ -36,7 +36,7 @@ namespace TicketSystemBusinessLayer.BusinessLogic.RequestTicket
             if (!id.HasValue || id == 0) 
                 throw new Exception("Not a valide Ticket Id.");
 
-            var ticket = await _context.Ticket
+            var ticket = await _context.Tickets
                 .FindAsync(id);
 
             if (ticket is null)
@@ -51,14 +51,14 @@ namespace TicketSystemBusinessLayer.BusinessLogic.RequestTicket
         {
             if (!id.HasValue || id == 0) return null;
 
-            return await _context.Ticket
+            return await _context.Tickets
                 .FirstOrDefaultAsync(m => m.TicketId == id);
         }
 
         /// <inheritdoc/>
         public IEnumerable<Ticket> GetTickets()
         {
-            return _context.Ticket.AsNoTracking();
+            return _context.Tickets.AsNoTracking();
         }
 
         /// <inheritdoc/>
@@ -67,7 +67,7 @@ namespace TicketSystemBusinessLayer.BusinessLogic.RequestTicket
             if (ticket.TicketId == 0)
                 throw new Exception("Not a valide Ticket Id.");
 
-            var originalTicket = await _context.Ticket
+            var originalTicket = await _context.Tickets
                 .FindAsync(ticket.TicketId);
 
             if(!string.IsNullOrEmpty(ticket.Description))
