@@ -3,11 +3,16 @@ using TicketSystemEntities.Database;
 
 namespace TicketSystemEntities.ApplicationDbContext
 {
-    public class TicketAppContext : ITicketAppContext
+    public abstract class ITicketAppContext : DbContext
     {
         #region Constructor
 
-        public TicketAppContext(DbContextOptions<ITicketAppContext> options)
+        public ITicketAppContext()
+        {
+
+        }
+
+        public ITicketAppContext(DbContextOptions<ITicketAppContext> options)
             : base(options)
         {
         }
@@ -26,7 +31,7 @@ namespace TicketSystemEntities.ApplicationDbContext
 
         #region DnSet
 
-        public DbSet<Ticket> Tickets { get; set; } = default!;
+        public virtual DbSet<Ticket> Tickets { get; set; } = default!;
 
         #endregion
     }
