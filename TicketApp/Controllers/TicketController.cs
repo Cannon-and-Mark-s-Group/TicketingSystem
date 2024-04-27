@@ -30,18 +30,18 @@ namespace TicketApp.Controllers
         // GET: Ticket
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Ticket.ToListAsync());
+              return View(await _context.Tickets.ToListAsync());
         }
 
         // GET: Ticket/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Ticket == null)
+            if (id == null || _context.Tickets == null)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket
+            var ticket = await _context.Tickets
                 .FirstOrDefaultAsync(m => m.TicketId == id);
             if (ticket == null)
             {
@@ -76,12 +76,12 @@ namespace TicketApp.Controllers
         // GET: Ticket/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Ticket == null)
+            if (id == null || _context.Tickets == null)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket.FindAsync(id);
+            var ticket = await _context.Tickets.FindAsync(id);
             if (ticket == null)
             {
                 return NotFound();
@@ -127,12 +127,12 @@ namespace TicketApp.Controllers
         // GET: Ticket/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Ticket == null)
+            if (id == null || _context.Tickets == null)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket
+            var ticket = await _context.Tickets
                 .FirstOrDefaultAsync(m => m.TicketId == id);
             if (ticket == null)
             {
@@ -147,14 +147,14 @@ namespace TicketApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Ticket == null)
+            if (_context.Tickets == null)
             {
                 return Problem("Entity set 'TicketAppContext.Ticket'  is null.");
             }
-            var ticket = await _context.Ticket.FindAsync(id);
+            var ticket = await _context.Tickets.FindAsync(id);
             if (ticket != null)
             {
-                _context.Ticket.Remove(ticket);
+                _context.Tickets.Remove(ticket);
             }
             
             await _context.SaveChangesAsync();
@@ -163,7 +163,7 @@ namespace TicketApp.Controllers
 
         private bool TicketExists(int id)
         {
-          return _context.Ticket.Any(e => e.TicketId == id);
+          return _context.Tickets.Any(e => e.TicketId == id);
         }
 
         #endregion

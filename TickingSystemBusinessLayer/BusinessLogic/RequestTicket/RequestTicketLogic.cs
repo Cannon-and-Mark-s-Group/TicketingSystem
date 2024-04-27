@@ -8,13 +8,13 @@ namespace TicketSystemBusinessLayer.BusinessLogic.RequestTicket
     {
         #region Fields 
 
-        private readonly ITicketAppContext _context;
+        private readonly TicketAppContext _context;
 
         #endregion
 
         #region Constructor
 
-        public RequestTicketLogic(ITicketAppContext context) 
+        public RequestTicketLogic(TicketAppContext context) 
         {
             _context = context;
         }

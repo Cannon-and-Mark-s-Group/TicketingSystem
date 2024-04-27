@@ -10,6 +10,7 @@ builder.Services.AddDbContext<TicketAppContext>(options =>
 
 builder.Services.AddScoped<IRequestTicketLogic, RequestTicketLogic>();
 
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

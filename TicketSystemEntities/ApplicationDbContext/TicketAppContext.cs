@@ -3,11 +3,11 @@ using TicketSystemEntities.Database;
 
 namespace TicketSystemEntities.ApplicationDbContext
 {
-    public class TicketAppContext : ITicketAppContext
+    public class TicketAppContext : DbContext
     {
         #region Constructor
 
-        public TicketAppContext(DbContextOptions<ITicketAppContext> options)
+        public TicketAppContext(DbContextOptions<TicketAppContext> options)
             : base(options)
         {
         }
