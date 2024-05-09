@@ -1,7 +1,5 @@
-using Moq;
 using TicketSystemBusinessLayer.BusinessLogic.RequestTicket;
 using TicketSystemBusinessLayer.Tests.SharedResources;
-using TicketSystemEntities.ApplicationDbContext;
 using TicketSystemEntities.Database;
 
 namespace TicketSystemBusinessLayer.Tests.TicketSystemBusinesslayer.RequestTicket
