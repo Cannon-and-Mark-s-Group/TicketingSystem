@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TicketSystemBusinessLayer.BusinessLogic.RequestTicket;
 using TicketSystemEntities.ApplicationDbContext;
 using TicketSystemEntities.Database;
 
@@ -12,15 +13,19 @@ namespace TicketApp.Controllers
         #region Fields
 
         private readonly TicketAppContext _context;
+        private readonly IRequestTicketLogic _requestTicketLogic;
 
         #endregion
 
         #region Constructor
 
         //TODO: remove TicketAppContext injection
-        public TicketController(TicketAppContext context)
+        public TicketController(
+            TicketAppContext context,
+            IRequestTicketLogic requestTicketLogic)
         {
             _context = context;
+            _requestTicketLogic = requestTicketLogic;
         }
 
         #endregion
@@ -165,10 +170,6 @@ namespace TicketApp.Controllers
         {
           return _context.Tickets.Any(e => e.TicketId == id);
         }
-
-        #endregion
-
-        #region Standard Route Actions
 
         #endregion
     }

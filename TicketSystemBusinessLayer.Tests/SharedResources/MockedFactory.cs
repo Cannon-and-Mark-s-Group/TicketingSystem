@@ -10,7 +10,7 @@ namespace TicketSystemBusinessLayer.Tests.SharedResources
     {
         #region TicketAppContext
 
-        public static Mock<ITicketAppContext> MockTicketAppContext()
+        public static Mock<TicketAppContext> MockTicketAppContext()
         {
             var tickets = new List<Ticket>
             {
@@ -25,7 +25,7 @@ namespace TicketSystemBusinessLayer.Tests.SharedResources
             };
 
 
-            var mockContext = new Mock<ITicketAppContext>();
+            var mockContext = new Mock<TicketAppContext>();
             mockContext.Setup<DbSet<Ticket>>(t => t.Tickets)
                 .ReturnsDbSet(tickets);
 

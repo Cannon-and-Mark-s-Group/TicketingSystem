@@ -14,7 +14,7 @@ namespace TicketSystemEntities.Database
         public string Notes { get; set; }
 
         //TODO: Break into it's own entity
-        //public virtual Tech Tech { get; set; }
+        public virtual Tech Tech { get; set; }
 
     }
 }
